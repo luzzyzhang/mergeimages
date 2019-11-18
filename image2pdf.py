@@ -1,7 +1,5 @@
 import os
 from concurrent import futures
-from os import listdir
-from os.path import join
 
 import requests
 from PIL import Image
@@ -44,8 +42,8 @@ def download_many(cc_list):
 
 def join_image_to_pdf(targe_file='~/Desktop/default.pdf'):
     image_lst = [
-        Image.open(join(DOWNLOAD_PATH, f))
-        for f in sorted(listdir(DOWNLOAD_PATH), key=lambda x: int(x.split('.')[0]))
+        Image.open(os.path.join(DOWNLOAD_PATH, f))
+        for f in sorted(os.listdir(DOWNLOAD_PATH), key=lambda x: int(x.split('.')[0]))
         if f.endswith('.jpg')
     ]
 
